@@ -6,12 +6,13 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 
 export default {
  
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App111'
+      msg: '欢迎回来，请先登录~'
     }
   },
   props:{
