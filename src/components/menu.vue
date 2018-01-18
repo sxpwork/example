@@ -17,9 +17,9 @@ import Vue from 'vue'
 			data(){
 				return {
 					imgUrl:'../../src/assets/image/',
-              	 menuItem:[{text:'首页',src:'home',srcS:'home1',active:true},
-              	           {text:'发现',src:'find',srcS:'find1',active:false},
-              	           {text:'我的',src:'my',srcS:'my1',active:false} ]
+              	 menuItem:[{name:'',text:'首页',src:'home',srcS:'home1',active:true},
+              	           {name:'find',text:'发现',src:'find',srcS:'find1',active:false},
+              	           {name:'my',text:'我的',src:'my',srcS:'my1',active:false} ]
 				}
 			},
 			methods:{
@@ -29,8 +29,9 @@ import Vue from 'vue'
 						Vue.set(a,'active',false);
 					}
 					Vue.set(item,'active',true);
-			
-				}
+					this.$emit("getMenu",item.name);
+				},
+				
 			}
 
 
