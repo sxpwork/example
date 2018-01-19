@@ -22,7 +22,7 @@
 
 </script>
 <style scoped>
-	.search{width: 220px;display: inline-block;position: relative;border:1px solid #8a8a8a;}
+	.search{width: 220px;display: inline-block;position: relative;border:1px solid #8a8a8a;margin-left: -300px;}
 	.searchInp{height: 20px;line-height: 20px;padding: 4px 10px 4px 10px;border:none;outline: none; }
 	.searchIcon{width:20px;height: 20px;vertical-align: middle;display: inline-block;cursor: pointer;}
 </style>

@@ -5,6 +5,8 @@ import iView from 'iview'
 import App from './App'
 import router from './router'
 import '../src/assets/css/common.css'
+
+window.bus=new Vue()
 Vue.config.productionTip = false
 Vue.use(iView);
 /* eslint-disable no-new */
