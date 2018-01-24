@@ -1,22 +1,37 @@
-import vue from 'vue'
-import vuex from 'vuex'
-Vue.use(vuexs)
+import Vue from 'vue'
+import Vuex from 'vuex'
+Vue.use(Vuex)
  const store =new Vuex.Store({
  	state:{
  		count:0,
- 		list:[{id:1,text:'...',done:true},{id:2,text:'我是第二个id',done:false}]
+ 		username:"游客"
  	},
  	mutations:{
  		increment(state)
        {
        	state.count++;
        },
+       checkLogin(state,username)
+       {
+       	state.username=username;
+       }
 
 
  	},
  	getters:{
- 			tod:(state)=>return state.list.filter(todo=>todo.done),
- 			todcount:(state,getters)=>return getters.tod.length
+ 			
+ 	},
+ 	actions:{
+ 			increAction(context)
+ 			{
+ 				context.commit("increment");
+ 			},
+ 			checklgActiob(context,username)
+ 			{
+ 				context.commit("checkLogin",username);
+ 			}
  	}
 
- })
+
+ });
+ export default store;

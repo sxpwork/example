@@ -21,21 +21,21 @@
 
 </template>
 <script>
+import {getartlist} from '../services/services'
   export default {
     data () {
       return {
        imgurl:"../../src/assets/image/girl.png",
-       items:[{id:1,title:'前端跨域问题解决方法集锦',author:'夏末秋至',time:'2018-01-17',
-               content:'这是最新资讯'},
-              {id:2,title:'浏览器常见兼容问题',author:'张小猪',time:'2018-01-17',
-               content:'火狐 谷歌 等等'}, {id:3,title:'浏览器常见兼容问题',author:'张小猪',time:'2018-01-17',
-               content:'火狐 谷歌 等等'}, {id:4,title:'浏览器常见兼容问题',author:'张小猪',time:'2018-01-17',
-               content:'火狐 谷歌 等等'}]
+       items:[]
       }
     },
   
     components: {
      
+    },
+    created(){
+
+    this.getList();
     },
     methods:{
       detailId:function(id){
@@ -43,6 +43,26 @@
           this.$router.push({path:'/detail/'+id});
           //bus.$emit('transmit',id)
       },
+      getList(){
+       var self=this;
+          getartlist().then((res)=>{
+    
+           self.items= JSON.parse(JSON.stringify(res.data));
+           console.log( self.items);
+          }).catch((err)=>{
+                console.log("fail"+err);
+          });
+         
+            // var self=this;
+            // this.$http.get("../src/data/artData.json").then((res)=>{
+            //     var data=res.bodyText;
+            //     var result=JSON.parse(res.bodyText);
+            //       self.items=result.data;
+            //   console.log(result);
+            //  }).catch((res)=>{
+            //      console.log("出错了");
+            //  })
+    }
     }
   };
 </script>

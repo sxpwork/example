@@ -16,15 +16,16 @@ export default new rt({
       component: index,
       children:[
       {
-        path:'/find',
+        path:'find',
+        name:'find',
        component:find
       },
       {
-       path:'/my',
+       path:'my',
        component:my
        },
        {
-       path:'/detail/:id',
+       path:'detail/:id',
        component:detail
        },
       ]

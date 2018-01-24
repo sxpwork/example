@@ -3,15 +3,15 @@
     
   
       <div class="banner">
-            <search></search>
+         
             <Vmenu v-on:getMenu="changeMenu"></Vmenu>
-
             <a href="" class="login">登录</a>
+            <search></search>
       </div>
   <div class="middle">
 
   <div class="content">
-    <router-view></router-view>
+    <router-view ></router-view>
   </div>
 
   <div class="rtcon">
@@ -19,16 +19,16 @@
           <div class="loginPanel" v-if="isLogin">
               <div class="username line">
                   <img src="../src/assets/image/name.png"/>
-                  <input type="text" class="inpName " placeholder="请输入用户名" v-model="username"/>
+                  <input type="text" class="inpName " placeholder="请输入用户名" v-model="username" />
               </div>
               <div class="pwd line">
                    <img src="../src/assets/image/pwd.png"/>
-                  <input type="password" class="inpPwd" v-model="pwd" placeholder="密码"/>
+                  <input type="password" class="inpPwd" v-model="pwd" placeholder="密码" />
               </div>
               <a href="javascript:void" class="enterBtn" @click="login">登录</a>
 
           </div>
-          <div v-else>
+          <div class="loginPanel" v-else>
               欢迎你，{{username}}
           </div>
             <!--tab切换-->
@@ -56,6 +56,7 @@
 import Vmenu from './components/menu.vue'
 import search from './components/search.vue'
 import leftmenu from './components/leftmenu.vue'
+import Vue from 'vue'
 
 export default {
   components:{Vmenu,search,leftmenu},
@@ -75,9 +76,14 @@ export default {
   created() {
 
    this.list=this.atlist;
-    this.$router.push({path:'/find'})
+   this.$router.push({path:'/find'});
+
+  },
+  mounted(){
+   
   },
   methods:{
+
     changeMenu:function(name)
     {
       console.log("您选择的类目是`{name}`",name);
@@ -88,9 +94,15 @@ export default {
         this.list=index==0?this.atlist:this.cmlist
     },
     login:function(){
-       isLogin=false;
+      this.isLogin=false;
+       if(this.username!=""){
+        this.$store.dispatch('checklgActiob',this.username);
+       }
+       console.log(this.$store.state.username);
+       
 
     }
+    
   }
 
 
