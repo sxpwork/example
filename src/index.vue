@@ -3,10 +3,31 @@
     
   
       <div class="banner">
-         
+
+              <Menu mode="horizontal" active-name="home" theme="dark">
+                  <MenuItem name="home" >
+                      <Icon type="android-home" size="16"></Icon>
+                      首页
+                  </MenuItem>
+                   <MenuItem name="find" >
+                   <Icon type="ios-eye" size="18"></Icon>
+                      发现
+                  </MenuItem>
+                   <MenuItem name="special" >
+                   <Icon type="android-clipboard" size="16"></Icon>
+                     专栏
+                  </MenuItem>
+                  <MenuItem name="my" >
+                  <Icon type="android-contact" size="16"></Icon>
+                    我的
+                  </MenuItem>
+              </Menu>
+
+
+           <!--  <search></search>
             <Vmenu v-on:getMenu="changeMenu"></Vmenu>
-            <a href="" class="login">登录</a>
-            <search></search>
+
+            <a href="" class="login">登录</a> -->
       </div>
   <div class="middle">
 
@@ -17,7 +38,7 @@
   <div class="rtcon">
           <!--登录界面-->
           <div class="loginPanel" v-if="isLogin">
-              <div class="username line">
+             <!--  <div class="username line">
                   <img src="../src/assets/image/name.png"/>
                   <input type="text" class="inpName " placeholder="请输入用户名" v-model="username" />
               </div>
@@ -25,14 +46,22 @@
                    <img src="../src/assets/image/pwd.png"/>
                   <input type="password" class="inpPwd" v-model="pwd" placeholder="密码" />
               </div>
-              <a href="javascript:void" class="enterBtn" @click="login">登录</a>
-
+              <a href="javascript:void" class="enterBtn" @click="login">登录</a> -->
+              <Input type="text" name="" v-model="username" placeholder="请输入用户名">
+                <span slot="prepend"> <Icon type="android-person" size="22"></Icon></span>
+             </Input>
+             <br/>
+               <Input type="password" name="" v-model="pwd"  placeholder="请输入密码">
+                <span slot="prepend"> <Icon type="android-lock" size="22"></Icon></span>
+             </Input>
+<br/>
+               <Button type="primary" long>登录</Button>
           </div>
           <div class="loginPanel" v-else>
               欢迎你，{{username}}
           </div>
             <!--tab切换-->
-            <div class="infoTabs"> 
+          <!--   <div class="infoTabs"> 
                   <span v-for="(item,index) in  tabs" :class="{active:tabnum==index}" class="tabs" @click="changeTabs(index)">
                       {{item.name}}
                   </span>
@@ -42,7 +71,12 @@
                       </li>
                   </ul>
 
-            </div>
+            </div> -->
+            <Tabs type="card">
+               <TabPane label="最新文章"></TabPane>
+               <TabPane label="最新评论"></TabPane>
+              
+            </Tabs>
          <!--tab切换-->
   </div>
    
@@ -53,13 +87,13 @@
 </template>
 
 <script>
-import Vmenu from './components/menu.vue'
+// import Vmenu from './components/menu.vue'
 import search from './components/search.vue'
 import leftmenu from './components/leftmenu.vue'
 import Vue from 'vue'
 
 export default {
-  components:{Vmenu,search,leftmenu},
+  components:{},
   data(){
     return {
           isLogin:true,
